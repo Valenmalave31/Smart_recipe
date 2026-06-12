@@ -163,3 +163,14 @@ db.sqlite3
 # Si quieres que se suban las migraciones, no pongas nada aquí.
 # Si usas local_settings.py para contraseñas, añade esto:
 local_settings.py
+
+# Secretos
+.env
+
+# Base de datos
+db.sqlite3
+
+# Archivos de caché y entorno
+__pycache__/
+venv/
+.vscode/
