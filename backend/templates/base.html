@@ -10,102 +10,52 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- CSS propio -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-
-<body>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <body>
 
     <div class="app-container">
 
         <!-- Sidebar -->
         <aside class="sidebar">
-
-            <button id="toggleSidebar" class="toggle-btn">
-                ☰
-            </button>
-
-            <div class="logo">
-                🍳 <span class="logo-text">Smart Recipe</span>
+            <button id="toggleSidebar" class="toggle-btn">☰</button>
+           <div class="logo">
+            🍳 <span class="logo-text">Smart Recipe</span>
             </div>
 
             <nav>
-                <ul>
+                <ul class="nav-list">
+                    <li><a href="#" class="active"><span class="icon">🏠</span><span class="menu-text">Inicio</span></a></li>
+                </ul>
 
-                    <li>
-                        <a href="#">
-                            <span class="icon">🏠</span>
-                            <span class="menu-text">Dashboard</span>
-                        </a>
-                    </li>
+                <span class="section-title">MI RECETARIO</span>
+                <ul class="nav-list">
+                    <li><a href="#"><span class="icon">📖</span><span class="menu-text">Todas las recetas</span></a></li>
+                    <li><a href="#"><span class="icon">❤️</span><span class="menu-text">Favoritas</span></a></li>
+                    <li><a href="#"><span class="icon">➕</span><span class="menu-text">Nueva receta</span></a></li>
+                </ul>
 
-                    <li>
-                        <a href="#">
-                            <span class="icon">📖</span>
-                            <span class="menu-text">Todas las recetas</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <span class="icon">❤️</span>
-                            <span class="menu-text">Favoritas</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <span class="icon">➕</span>
-                            <span class="menu-text">Nueva receta</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <span class="icon">🥕</span>
-                            <span class="menu-text">Buscar por ingredientes</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <span class="icon">✨</span>
-                            <span class="menu-text">Generar receta IA</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <span class="icon">👨‍🍳</span>
-                            <span class="menu-text">Asistente culinario</span>
-                        </a>
-                    </li>
-
+                <span class="section-title">CHEF IA</span>
+                <ul class="nav-list">
+                    <li><a href="#"><span class="icon">🥕</span><span class="menu-text">Buscar por ingredientes</span></a></li>
+                    <li><a href="#"><span class="icon">✨</span><span class="menu-text">Generar receta</span></a></li>
+                    <li><a href="#"><span class="icon">💬</span><span class="menu-text">Asistente culinario</span></a></li>
                 </ul>
             </nav>
-
         </aside>
 
         <!-- Contenido -->
         <main class="main-content">
-
             <header class="topbar">
-
-                <h4>Smart Recipe</h4>
-
-                <div>
-                    Bienvenida 👋
+                <div class="search-container">
+                    <input type="text" class="form-control search-bar" placeholder="🔍 Buscar recetas...">
                 </div>
-
             </header>
 
             <section class="content">
-
                 {% block content %}
                 {% endblock %}
-
             </section>
-
         </main>
 
     </div>
