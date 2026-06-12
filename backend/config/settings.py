@@ -58,7 +58,8 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        # Busca directamente en la carpeta 'templates' que debe estar en la raíz de tu proyecto
+        'DIRS': [BASE_DIR / 'templates'], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,6 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+import os
+print("--- BUSCANDO ESTÁTICOS EN ---")
+print(BASE_DIR / 'backend' / 'static') 
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
