@@ -25,21 +25,62 @@
 
             <nav>
                 <ul class="nav-list">
-                    <li><a href="#" class="active"><span class="icon">🏠</span><span class="menu-text">Inicio</span></a></li>
+                    <li>
+                        <a href="{% url 'dashboard' %}" class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+                            <span class="icon">🏠 </span>
+                            <span class="menu-text">Inicio </span>
+                        </a>
+                    </li>
                 </ul>
 
                 <span class="section-title">MI RECETARIO</span>
+
                 <ul class="nav-list">
-                    <li><a href="#"><span class="icon">📖</span><span class="menu-text">Todas las recetas</span></a></li>
-                    <li><a href="#"><span class="icon">❤️</span><span class="menu-text">Favoritas</span></a></li>
-                    <li><a href="#"><span class="icon">➕</span><span class="menu-text">Nueva receta</span></a></li>
+                    <li>
+                        <a href="{% url 'recipes_list' %}" class="{% if request.resolver_match.url_name == 'recipes_list' %}active{% endif %}">
+                            <span class="icon">📖</span>
+                            <span class="menu-text">Todas las recetas</span>
+                        </a>
+                    </li>  
+
+                    <li>
+                        <a href="#">
+                            <span class="icon">❤️</span>
+                            <span class="menu-text">Favoritas</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <span class="icon">➕</span>
+                            <span class="menu-text">Nueva receta</span>
+                        </a>
+                    </li>
                 </ul>
 
                 <span class="section-title">CHEF IA</span>
+
                 <ul class="nav-list">
-                    <li><a href="#"><span class="icon">🥕</span><span class="menu-text">Buscar por ingredientes</span></a></li>
-                    <li><a href="#"><span class="icon">✨</span><span class="menu-text">Generar receta</span></a></li>
-                    <li><a href="#"><span class="icon">💬</span><span class="menu-text">Asistente culinario</span></a></li>
+                    <li>
+                        <a href="#">
+                            <span class="icon">🥕</span>
+                            <span class="menu-text">Buscar por ingredientes</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <span class="icon">✨</span>
+                            <span class="menu-text">Generar receta</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <span class="icon">💬</span>
+                            <span class="menu-text">Asistente culinario</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </aside>
