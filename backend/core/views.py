@@ -22,3 +22,11 @@ def favorites_list(request):
 
 def create_recipe(request):
     return render(request, 'recipes/create_recipe.html')
+
+def recipe_detail(request, pk):
+    context = {
+        'nombre': 'Pasta cremosa con pollo',
+        'calorias': 520,
+        'tiempo': '30 min'
+    }
+    return render(request, 'recipes/recipe_detail.html', context)
