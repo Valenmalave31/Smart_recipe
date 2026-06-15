@@ -17,3 +17,6 @@ def recipe_detail(request, pk):
 def recipes_list(request):
     return render(request, 'recipes/recipes.html')
 
+def favorites_list(request):
+    return render(request, 'favorites/favorites.html')
+
