@@ -20,3 +20,5 @@ def recipes_list(request):
 def favorites_list(request):
     return render(request, 'favorites/favorites.html')
 
+def create_recipe(request):
+    return render(request, 'recipes/create_recipe.html')
