@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="recipe-container">
+        <a href="{% url 'recipes_list' %}" class="back-link">
+            ← Todas las recetas
+        </a>
+        <div class="recipe-header">
+            <div class="recipe-image">
+                <img src="https://tse4.mm.bing.net/th/id/OIP.AIP3kqiHmv8RDZNIEOPViQHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pasta">
+            </div>
+
+            <div class="recipe-right-side">
+                <h2>Pasta cremosa con pollo</h2>
+                <p>Pasta en salsa cremosa con pechuga de pollo salteada, perfecta para un almuerzo reconfortante y delicioso.</p>
+                
+                <div class="tags-row">
+                    <span class="tag tag-almuerzo">Almuerzo</span>
+                    <span class="tag tag-pastas">Pastas</span>
+                    <span class="tag tag-salado">Salado</span>
+                </div>
+
+                <div class="stats-bar">
+                    <div class="stat"><span>🕒</span><strong>30 min</strong><small>Tiempo de preparación</small></div>
+                    <div class="stat"><span>📊</span><strong>Media</strong><small>Dificultad</small></div>
+                    <div class="stat"><span>👥</span><strong>4 porciones</strong><small>Porciones</small></div>
+                    <div class="stat"><span>🔥</span><strong>520 kcal</strong><small>Por porción</small></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="recipe-details-grid">
+<div class="ingredients-section">
+    <div class="section-header">
+        <h4>Ingredientes</h4>
+        <button class="download-btn">⬇ Descargar lista</button>
+    </div>
+
+        <div class="ingredients-list">
+            <div class="ingredient-card">
+                <span>Pechuga de pollo</span> <strong>500 g</strong> <button class="delete-btn">🗑️</button>
+            </div>
+            <div class="ingredient-card">
+                <span>Pasta (fettuccine)</span> <strong>250 g</strong> <button class="delete-btn">🗑️</button>
+            </div>
+            <div class="ingredient-card">
+                <span>Crema de leche</span> <strong>200 ml</strong> <button class="delete-btn">🗑️</button>
+            </div>
+            <div class="ingredient-card">
+                <span>Queso parmesano</span> <strong>50 g</strong> <button class="delete-btn">🗑️</button>
+            </div>
+            <div class="ingredient-card">
+                <span>Ajo</span> <strong>2 dientes</strong> <button class="delete-btn">🗑️</button>
+            </div>
+            <div class="ingredient-card">
+                <span>Aceite de oliva</span> <strong>2 cda</strong> <button class="delete-btn">🗑️</button>
+            </div>
+            <div class="ingredient-card">
+                <span>Sal</span> <strong>1 cdita</strong> <button class="delete-btn">🗑️</button>
+            </div>
+            <div class="ingredient-card">
+                <span>Pimienta negra</span> <strong>1/2 cdita</strong> <button class="delete-btn">🗑️</button>
+            </div>
+            <div class="ingredient-card">
+                <span>Perejil fresco</span> <strong>2 cda</strong> <button class="delete-btn">🗑️</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="nutrition-section">
+    <h5>Información nutricional <small>(por porción)</small></h5>
+        <div class="nutrition-table">
+            <div class="nutri-row"><span>Calorías</span> <strong>520 kcal</strong></div>
+            <div class="nutri-row"><span>Proteínas</span> <strong>32 g</strong></div>
+            <div class="nutri-row"><span>Grasas</span> <strong>22 g</strong></div>
+            <div class="nutri-row"><span>Carbohidratos</span> <strong>48 g</strong></div>
+            <div class="nutri-row"><span>Azúcares</span> <strong>3 g</strong></div>
+            <div class="nutri-row"><span>Fibra</span> <strong>2 g</strong></div>
+        </div>
+
+        <div class="nutrition-note">
+            ℹ Estos valores son aproximados. Pueden variar según los ingredientes.
+        </div>
+        </div>
+    </div>
+
+    <div class="preparation-section">
+        <h4>Preparación <small>(paso a paso)</small></h4>
+        
+        <ol class="steps-list">
+            <li>Cocina la pasta en agua con sal según las instrucciones del paquete. Escurre y reserva.</li>
+            <li>Corta la pechuga de pollo en tiras y sazona con sal y pimienta.</li>
+            <li>En una sartén, calienta el aceite de oliva y cocina el pollo hasta que esté dorado. Retira y reserva.</li>
+            <li>En la misma sartén, agrega el ajo picado y sofríe por 1 minuto.</li>
+            <li>Añade la crema de leche y el queso parmesano. Mezcla hasta integrar y deja cocinar a fuego bajo por 3-5 minutos.</li>
+            <li>Incorpora el pollo y la pasta a la salsa. Mezcla bien.</li>
+            <li>Finaliza con perejil fresco picado y ajusta de sal y pimienta al gusto. Sirve caliente.</li>
+        </ol>
+    </div>
+
+    <div class="footer-section">
+        <div class="additional-info-card">
+            <div class="info-item">
+                <span class="icon">🏷️</span>
+                <div>
+                    <small>Etiquetas</small>
+                    <div class="tags">
+                        <span class="tag">Almuerzo</span>
+                        <span class="tag">Pastas</span>
+                        <span class="tag">Salado</span>
+                    </div>
+                </div>
+            </div>
+            <div class="info-item">
+                <span class="icon">🍳</span>
+                <div>
+                    <small>Subetiqueta</small>
+                    <p>Todas las subetiquetas</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <span class="icon">📅</span>
+                <div>
+                    <small>Fecha de creación</small>
+                    <p>15 de junio de 2025</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn-secondary">✏️ Editar receta</button>
+            <button class="btn-secondary">🔗 Compartir receta</button>
+            <a href="{% url 'recipes_list' %}" class="btn-primary btn-back">
+                ← Volver a todas las recetas
+            </a>
+        </div>
+    </div>
+{% endblock %}
