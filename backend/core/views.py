@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+
+
 def dashboard(request):
     stats = [
         {'title': 'Total de recetas', 'value': '28', 'icon': '📖', 'color': '#e8f5e9'},
@@ -11,3 +13,12 @@ def dashboard(request):
 
 def recipe_detail(request, pk):
     return render(request, 'recipe_detail.html')
+
+def recipes_list(request):
+    return render(request, 'recipes/recipes.html')
+
+def favorites_list(request):
+    return render(request, 'favorites/favorites.html')
+
+def create_recipe(request):
+    return render(request, 'recipes/create_recipe.html')

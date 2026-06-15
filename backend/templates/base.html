@@ -9,6 +9,9 @@
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="/static/css/style.css">
@@ -25,21 +28,62 @@
 
             <nav>
                 <ul class="nav-list">
-                    <li><a href="#" class="active"><span class="icon">🏠</span><span class="menu-text">Inicio</span></a></li>
+                    <li>
+                        <a href="{% url 'dashboard' %}" class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+                            <span class="icon">🏠 </span>
+                            <span class="menu-text">Inicio </span>
+                        </a>
+                    </li>
                 </ul>
 
                 <span class="section-title">MI RECETARIO</span>
+
                 <ul class="nav-list">
-                    <li><a href="#"><span class="icon">📖</span><span class="menu-text">Todas las recetas</span></a></li>
-                    <li><a href="#"><span class="icon">❤️</span><span class="menu-text">Favoritas</span></a></li>
-                    <li><a href="#"><span class="icon">➕</span><span class="menu-text">Nueva receta</span></a></li>
+                    <li>
+                        <a href="{% url 'recipes_list' %}" class="{% if request.resolver_match.url_name == 'recipes_list' %}active{% endif %}">
+                            <span class="icon">📖</span>
+                            <span class="menu-text">Todas las recetas</span>
+                        </a>
+                    </li>  
+
+                    <li>
+                        <a href="{% url 'favorites_list' %}" class="{% if request.resolver_match.url_name == 'favorites_list' %}active{% endif %}">
+                            <span class="icon">❤️</span>
+                            <span class="menu-text">Favoritas</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'create_recipe' %}" class="{% if request.resolver_match.url_name == 'create_recipe' %}active{% endif %}">
+                            <span class="icon">➕</span>
+                            <span class="menu-text">Nueva receta</span>
+                        </a>
+                    </li>
                 </ul>
 
                 <span class="section-title">CHEF IA</span>
+
                 <ul class="nav-list">
-                    <li><a href="#"><span class="icon">🥕</span><span class="menu-text">Buscar por ingredientes</span></a></li>
-                    <li><a href="#"><span class="icon">✨</span><span class="menu-text">Generar receta</span></a></li>
-                    <li><a href="#"><span class="icon">💬</span><span class="menu-text">Asistente culinario</span></a></li>
+                    <li>
+                        <a href="#">
+                            <span class="icon">🥕</span>
+                            <span class="menu-text">Buscar por ingredientes</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <span class="icon">✨</span>
+                            <span class="menu-text">Generar receta</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <span class="icon">💬</span>
+                            <span class="menu-text">Asistente culinario</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </aside>
@@ -60,10 +104,8 @@
 
     </div>
 
-    <script
-         src="{% static 'js/app.js' %}">
-    </script>
+    <script src="{% static 'js/app.js' %}?v=1.1"></script>
 
-</body>
+    </body>
 
 </html>
