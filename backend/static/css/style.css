@@ -277,7 +277,7 @@ display: grid;
 
 .header-section {
     padding-bottom: 10px;
-    border-bottom: 1px solid #f0f0f0; /* Línea sutil para separar */
+    border-bottom: 1px solid #f0f0f0; 
 }
 
 /* Para asegurar que el gris claro se vea bien en cualquier pantalla */
@@ -316,7 +316,7 @@ display: grid;
 .filter-content {
     transition: max-height 0.3s ease-out;
     overflow: hidden;
-    max-height: 1000px; /* Altura suficiente para mostrar el contenido */
+    max-height: 1000px; 
 }
 .filter-content.hidden {
     max-height: 0;
@@ -324,8 +324,8 @@ display: grid;
 
 /* Color gris para los textos que no son negrita */
 .filter-label {
-    color: #4a4a4a; /* Un gris oscuro suave, no negro puro */
-    font-size: 0.85rem; /* Tamaño más pequeño */
+    color: #4a4a4a; 
+    font-size: 0.85rem; 
     font-weight: 400;
 }
 
@@ -366,4 +366,379 @@ display: grid;
 
 .upload-content p {
     color: #212529;
+}
+
+/*Pantalla de detalles de receta*/
+
+.recipe-header {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.stats-bar {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.tag {
+    background: #fff3e0;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+}
+
+/* Contenedor principal */
+.recipe-right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    flex: 1; 
+}
+/* Header: Imagen a la izquierda, Texto a la derecha */
+.recipe-header {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+.recipe-image img { width: 400px; height: 300px; object-fit: cover; border-radius: 20px; }
+
+/* Etiquetas personalizadas */
+.tags-row { display: flex; gap: 10px; margin-top: 15px; }
+.tag { padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; }
+.tag-almuerzo { background: #fff3e0; color: #e67e22; }
+.tag-pastas { background: #ffe0b2; color: #d35400; }
+.tag-salado { background: #e8f5e9; color: #2e7d32; }
+
+/* Stats Bar: Alineación horizontal e iconos */
+.stats-bar {
+    display: flex;
+    justify-content: space-between;
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.stat span { font-size: 1.2rem; }
+.stat strong { font-size: 0.95rem; color: #212529; }
+.stat small { font-size: 0.75rem; color: #6c757d; }
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none; 
+    color: #4a6741;     
+    font-weight: 500;     
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    transition: opacity 0.2s;
+}
+
+.back-link:hover {
+    opacity: 0.7;        
+}
+
+/* Layout de dos columnas */
+.recipe-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px; 
+    gap: 30px;
+    margin-top: 40px;
+    align-items: start; 
+}
+
+/* Estilos de la tabla de ingredientes */
+.ingredients-section table { width: 100%; border-collapse: collapse; }
+.ingredients-section td { padding: 15px 0; border-bottom: 1px solid #f0f0f0; }
+
+/* Estilos de la info nutricional */
+/* Contenedor padre de la sección */
+.nutrition-section { 
+    background: #fff; 
+    padding: 25px; 
+    border-radius: 20px; 
+    border: 1px solid #f0f0f0; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    align-self: start; /* Asegura que se alinee arriba en el grid */
+    min-height: auto;
+}
+
+/* Título de la sección */
+.nutrition-section h4 { font-weight: 700; margin-bottom: 20px; }
+.nutrition-section h4 small { font-weight: 400; color: #888; font-size: 0.9rem; }
+
+/* Filas de la tabla */
+.nutri-row { 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 14px 0; 
+    border-bottom: 1px solid #f9f9f9; 
+    font-size: 1rem;
+}
+
+.nutri-row span { color: #555; }
+.nutri-row strong { color: #222; font-weight: 600; }
+
+/* El cuadro de aviso morado */
+.nutrition-note { 
+    background: #f3e5f5; 
+    color: #7b1fa2; 
+    padding: 15px; 
+    border-radius: 12px; 
+    font-size: 0.85rem; 
+    margin-top: 25px; 
+    line-height: 1.4;
+}
+
+/* Botón de descarga */
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+
+.download-btn {
+    background: none;
+    border: 1px solid transparent; /* Necesario para que no salte el layout al añadir borde */
+    color: #4a6741;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease; /
+}
+
+/* 1. Al pasar el mouse (efecto sombreado/fondo suave) */
+.download-btn:hover {
+    background: #e8f5e9; 
+    border: 1px solid #c8e6c9; 
+}
+
+/* 2. Al darle clic (efecto de presión) */
+.download-btn:active {
+    background: #d4edda; 
+    transform: scale(0.95); /* El botón se encoge un poquito al pulsar */
+}
+
+.preparation-section { margin-top: 40px; }
+
+.steps-list {
+    list-style: none;
+    padding: 0;
+    counter-reset: step-counter;
+}
+
+.steps-list li {
+    position: relative;
+    padding: 20px 20px 20px 70px;
+    margin-bottom: 5px; /* Separación entre tarjetas de pasos */
+    background: rgb(255, 255, 255);    /* Fondo de la tarjeta */
+    border: 1px solid #f0f0f0;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+/* El círculo verde con el número */
+.steps-list li::before {
+    content: counter(step-counter);
+    counter-increment: step-counter;
+    position: absolute;
+    left: 15px;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    background: #4a6741; 
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    z-index: 2;
+}
+
+/* La línea vertical que conecta los círculos */
+.steps-list { counter-reset: step-counter; }
+
+.steps-list li::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 60px;
+    width: 2px;
+    height: calc(100% - 40px);
+    background: #e0e0e0;
+    z-index: 1;
+}
+
+/* Ocultar la línea en el último elemento */
+.steps-list li:last-child::after { display: none; }
+
+/* Contenedor principal de ingredientes */
+.ingredients-list { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 5px; /* Separación entre cada tarjeta de ingrediente */
+}
+
+/* Tarjeta individual */
+.ingredient-card {
+    background: #ffffff;
+    padding: 16px 20px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    border: 1px solid #f0f0f0;
+    transition: transform 0.2s;
+}
+
+/* Tipografía dentro de la tarjeta */
+.ingredient-card span { font-weight: 500; color: #333; flex: 1; }
+.ingredient-card strong { color: #555; margin-right: 15px; }
+
+/* Botón de borrar */
+.delete-btn { 
+    background: #fff5f5; 
+    border: 1px solid #fee2e2; 
+    border-radius: 8px; 
+    padding: 5px 8px; 
+    cursor: pointer; 
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+.delete-btn:hover { background: #fee2e2; }
+
+/* Ajuste del header */
+.section-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 20px; 
+}
+
+/* Contenedor de información adicional pantalla de detalles de receta*/
+.additional-info-card {
+    background: white;
+    padding: 30px; 
+    border-radius: 20px;
+    border: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between; /* Distribuye equitativamente */
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+}
+
+.info-item { 
+    display: flex; 
+    align-items: center; 
+    gap: 18px; 
+    flex: 1;
+    border-right: 1px solid #e0e0e0; /*línea divisoria */
+    padding: 0 20px;
+}
+.info-item small { color: #888; font-size: 0.8rem; }
+.info-item .icon { font-size: 1.5rem; }
+
+.info-item:last-child { border-right: none; }
+
+/* Ajuste del icono: Tamaño y visibilidad */
+.info-item .icon { 
+    font-size: 1.8rem; /* Emojis más grandes */
+    background: #f8f9fa; 
+    padding: 10px;
+    border-radius: 12px;
+}
+
+/* Ajuste de texto: Color con mayor contraste */
+.info-item small { 
+    color: #666; 
+    font-size: 0.85rem; 
+    font-weight: 500;
+}
+
+.info-item p { 
+    color: #333; 
+    font-weight: 600; 
+    margin: 4px 0 0 0;
+}
+
+/* Tags */
+.tags { display: flex; gap: 5px; margin-top: 5px; }
+.tag { 
+    background: #fff3e0; 
+    color: #e67e22; 
+    padding: 2px 10px; 
+    border-radius: 10px; 
+    font-size: 0.75rem; 
+}
+
+/* Botones */
+.action-buttons {
+    display: flex;
+    gap: 20px; 
+    margin-top: 30px;
+    width: 100%; 
+}
+
+.action-buttons button {
+    flex: 1; 
+    padding: 15px 0; 
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; 
+    transition: all 0.3s ease;
+}
+
+.btn-secondary {
+    background: white;
+    border: 1px solid #4a6741; 
+    color: #4a6741;
+}
+
+.btn-primary {
+    background: #4a6741; 
+    border: none;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #3d5535;
+}
+.btn-secondary:hover {
+    background: #f1f4f0;
+}
+
+.btn-back {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #4a6741;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.btn-back:hover {
+    background: #3d5535;
+    color: white; 
 }
