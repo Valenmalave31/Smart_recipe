@@ -1,82 +1,203 @@
 document.addEventListener("DOMContentLoaded", function() {
     
-    // --- 1. Lógica del Menú Lateral ---
-    const toggleBtn = document.getElementById("toggleSidebar");
-    const sidebar = document.querySelector(".sidebar");
+    //Lógica del Menú Lateral
+    try {
+        const toggleBtn = document.getElementById("toggleSidebar");
+        const sidebar = document.querySelector(".sidebar");
 
-    if (toggleBtn && sidebar) {
-        toggleBtn.addEventListener("click", () => {
-            sidebar.classList.toggle("collapsed");
-        });
-    }
+        if (toggleBtn && sidebar) {
+            toggleBtn.addEventListener("click", () => {
+                sidebar.classList.toggle("collapsed");
+            });
+        }
+    } catch (e) { console.error("Error en Menú Lateral:", e); }
 
-    // --- 2. Lógica de Paginación ---
-    const cards = Array.from(document.querySelectorAll('.recipe-card-link'));
-    const itemsPerPage = 9;
-    let currentPage = 1;
-    const totalPages = Math.ceil(cards.length / itemsPerPage);
-
-    function showPage(page) {
-        // Ocultar todas las tarjetas
-        cards.forEach(card => card.style.display = 'none');
-        
-        // Mostrar solo las tarjetas del rango correspondiente
-        const start = (page - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        cards.slice(start, end).forEach(card => card.style.display = 'block');
-        
-        // Actualizar clase 'active' en los botones de números (1, 2, etc.)
-        document.querySelectorAll('.page-item[data-page]').forEach(el => {
-            el.classList.toggle('active', parseInt(el.dataset.page) === page);
-        });
-
-        // Habilitar/Deshabilitar botones Anterior/Siguiente
+    // Lógica de Paginación
+    try {
+        const cards = Array.from(document.querySelectorAll('.recipe-card-link'));
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
-        if (prevBtn) prevBtn.classList.toggle('disabled', page === 1);
-        if (nextBtn) nextBtn.classList.toggle('disabled', page === totalPages);
-    }
 
-    // Eventos para botones numéricos (1, 2)
-    document.querySelectorAll('.page-item[data-page]').forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            currentPage = parseInt(button.dataset.page);
-            showPage(currentPage);
-        });
-    });
+        if (cards.length > 0 && prevBtn && nextBtn) {
+            const itemsPerPage = 9;
+            let currentPage = 1;
+            const totalPages = Math.ceil(cards.length / itemsPerPage);
 
-    // Evento Anterior
-    document.getElementById('prev-btn').addEventListener('click', (e) => {
-        e.preventDefault();
-        if (currentPage > 1) {
-            currentPage--;
-            showPage(currentPage);
+            function showPage(page) {
+                cards.forEach(card => card.style.display = 'none');
+                const start = (page - 1) * itemsPerPage;
+                const end = start + itemsPerPage;
+                cards.slice(start, end).forEach(card => card.style.display = 'block');
+                
+                document.querySelectorAll('.page-item[data-page]').forEach(el => {
+                    el.classList.toggle('active', parseInt(el.dataset.page) === page);
+                });
+
+                prevBtn.classList.toggle('disabled', page === 1);
+                nextBtn.classList.toggle('disabled', page === totalPages);
+            }
+
+            document.querySelectorAll('.page-item[data-page]').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    currentPage = parseInt(button.dataset.page);
+                    showPage(currentPage);
+                });
+            });
+
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentPage > 1) { currentPage--; showPage(currentPage); }
+            });
+
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentPage < totalPages) { currentPage++; showPage(currentPage); }
+            });
+
+            showPage(1);
         }
-    });
+    } catch (e) { console.error("Error en Paginación:", e); }
 
-    // Evento Siguiente
-    document.getElementById('next-btn').addEventListener('click', (e) => {
-        e.preventDefault();
-        if (currentPage < totalPages) {
-            currentPage++;
-            showPage(currentPage);
-        }
-    });
-
-    // Inicializar mostrando la página 1
-    showPage(1);
-
-    // --- 3. Lógica para desplegar/ocultar filtros ---
-    document.querySelectorAll('.toggle-filter').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-target');
-            const content = document.getElementById(targetId);
-            
-            content.classList.toggle('hidden');
-            
-            // Si está oculto, rotamos 0deg (mirando a la derecha), si está visible, 90deg (mirando abajo)
-            this.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(90deg)';
+    //Lógica para desplegar/ocultar filtros
+    try {
+        document.querySelectorAll('.toggle-filter').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const content = document.getElementById(targetId);
+                if (content) {
+                    content.classList.toggle('hidden');
+                    this.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(90deg)';
+                }
+            });
         });
-    });
+    } catch (e) { console.error("Error en Filtros:", e); }
+
+    //Lógica para habilitar/deshabilitar Subetiqueta 
+    try {
+        const etiquetaSelect = document.getElementById('etiqueta-select');
+        const subetiquetaSelect = document.getElementById('subetiqueta-select');
+
+        if (etiquetaSelect && subetiquetaSelect) {
+            etiquetaSelect.addEventListener('change', function() {
+                if (this.value === 'Postres') {
+                    subetiquetaSelect.disabled = false;
+                } else {
+                    subetiquetaSelect.disabled = true;
+                    subetiquetaSelect.value = ""; 
+                }
+            });
+        }
+    } catch (e) { console.error("Error en Subetiquetas:", e); }
 });
+
+    //Lógica para Agregar e Eliminar Ingredientes 
+    try {
+        const ingredientsBody = document.getElementById('ingredients-body');
+        const addBtn = document.getElementById('add-ingredient-btn');
+
+        if (addBtn && ingredientsBody) {
+            addBtn.addEventListener('click', function() {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><input type="text" class="form-control" name="ingrediente[]" placeholder="Ej. Harina"></td>
+                    <td><input type="text" class="form-control" name="cantidad[]" placeholder="0"></td>
+                    <td>
+                        <select class="form-select" name="unidad[]">
+                            <option value="g">g</option>
+                            <option value="kg">kg</option>
+                            <option value="ml">ml</option>
+                            <option value="taza">taza</option>
+                            <option value="unidad">unidad</option>
+                            <option value="cucharada">cucharada</option>
+                            <option value="pizca">pizca</option>
+                        </select>
+                    </td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-link text-danger remove-ingredient" style="padding: 0;">
+                            <i class="bi bi-trash fs-4"></i>
+                        </button>
+                    </td>
+                `;
+                ingredientsBody.appendChild(tr);
+            });
+
+            // Lógica de eliminación (funciona para el icono / botón)
+            ingredientsBody.addEventListener('click', function(e) {
+                const btn = e.target.closest('.remove-ingredient');
+                if (btn) {
+                    btn.closest('tr').remove();
+                }
+            });
+        }
+    } catch (e) { console.error("Error en Ingredientes:", e); }
+
+    // Lógica para Preparación (Pasos) con metodo para poder reordenar
+    try {
+        const stepsContainer = document.getElementById('steps-container');
+        const addStepBtn = document.getElementById('add-step-btn');
+        let stepCount = 0;
+
+        // Inicializamos SortableJS
+        if (stepsContainer) {
+            new Sortable(stepsContainer, {
+                animation: 150,
+                handle: '.bi-grip-vertical', 
+                onEnd: function() {
+                    renumberSteps(); //reorganiza numeración
+                }
+            });
+        }
+
+        function renumberSteps() {
+            const steps = stepsContainer.querySelectorAll('.step-row');
+            steps.forEach((row, index) => {
+                row.querySelector('.step-number').textContent = index + 1;
+            });
+            stepCount = steps.length;
+        }
+
+        if (addStepBtn && stepsContainer) {
+            addStepBtn.addEventListener('click', function() {
+                stepCount++;
+                const div = document.createElement('div');
+                div.className = 'step-row d-flex align-items-center mb-3';
+                div.innerHTML = `
+                    <i class="bi bi-grip-vertical text-muted me-2" style="cursor: grab;"></i>
+                    <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3 step-number" style="width: 30px; height: 30px; flex-shrink: 0;">${stepCount}</div>
+                    <input type="text" class="form-control me-3" name="pasos[]" placeholder="Describe el paso...">
+                    <button type="button" class="btn btn-link text-danger remove-step p-0">
+                        <i class="bi bi-trash fs-5"></i>
+                    </button>
+                `;
+                stepsContainer.appendChild(div);
+            });
+
+            stepsContainer.addEventListener('click', function(e) {
+                if (e.target.closest('.remove-step')) {
+                    e.target.closest('.step-row').remove();
+                    renumberSteps();
+                }
+            });
+        }
+    } catch (e) { console.error("Error en Pasos:", e); }
+
+    //Lógica de tiempo y dificultad 
+    try {
+        const horasInput = document.getElementById('horas');
+        const minInput = document.getElementById('minutos');
+        const totalInput = document.getElementById('tiempo-total');
+
+        function calcularTiempo() {
+            const h = parseInt(horasInput.value) || 0;
+            const m = parseInt(minInput.value) || 0;
+            totalInput.value = (h * 60) + m;
+        }
+
+        [horasInput, minInput].forEach(input => {
+            input.addEventListener('input', calcularTiempo);
+        });
+
+        calcularTiempo();
+
+    } catch (e) { console.error("Error en Tiempo/Dificultad:", e); }
